@@ -1,0 +1,29 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: api
+    container_name: api
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/api
+    command: "/bin/bash"
+    stdin_open: true
+    tty: true
+    environment:
+      PORT: 8000
+      DB_URL: "postgresql://postgres:example@test_db:5432/postgres"
+    depends_on:
+      - test_db
+
+  test_db:
+    image: postgres
+    container_name: test_db
+    environment:
+      POSTGRES_PASSWORD: example
+
+networks:
+  default:
+    name: localdev
