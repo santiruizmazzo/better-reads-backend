@@ -11,13 +11,13 @@ router = APIRouter(
 
 @router.get("")
 def obtener_usuarios(session: Session = Depends(get_session)):
-    usuarios = session.exec(select(Usuario)).all()
-    return usuarios
+    # usuarios = session.exec(select(Usuario)).all()
+    return [{"id":1, "nombre":"Fulanito"}]
 
 
-@router.post("")
-def crear_usuario(usuario: Usuario, session: Session = Depends(get_session)):
-    session.add(usuario)
-    session.commit()
-    session.refresh(usuario)
-    return usuario
+# @router.post("")
+# def crear_usuario(usuario: Usuario, session: Session = Depends(get_session)):
+#     session.add(usuario)
+#     session.commit()
+#     session.refresh(usuario)
+#     return usuario
