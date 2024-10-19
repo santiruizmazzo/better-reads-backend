@@ -14,11 +14,11 @@ services:
     tty: true
     environment:
       PORT: 8000
-      DB_URL: "postgresql://postgres:example@test_db:5432/postgres"
+      DB_URL: "postgresql://postgres:example@dev_db:5432/postgres"
     depends_on:
-      - test_db
+      - dev_db
 
-  test_db:
+  dev_db:
     image: postgres
     container_name: better_reads_db
     environment:
@@ -26,4 +26,4 @@ services:
 
 networks:
   default:
-    name: localdev
+    name: devnet
